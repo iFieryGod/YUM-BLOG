@@ -1,0 +1,54 @@
+<header class="py-2 bg-warning text-white" id="main-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fa fa-users"></i> Users</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="actions py-4">
+    <div class="col-md-6 ml-auto mr-auto mb-3">
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="Search"><span class="input-group-btn"></span>
+        <button class="btn btn-warning text-white">Search</button>
+      </div>
+    </div>
+  </section>
+  <section class="py-4 mb-4" id="action">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Latest Post</h4>
+            </div>
+            <table class="table table-hover small">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Email Address</th>
+                  <th scope="col">#</th>
+                  <th scope="col">#</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each Strategy2}}
+                <tr>
+                  <td>{{firstName}}</td>
+                  <td>{{emailAddress}}</td>
+                  <td><a class="btn btn-info btn-sm" href="/users/edit/{{_id}}"><i class="fa fa-angle-double-right fa-xs"></i> Edit</a></td>
+                  <form action="/users/delete/{{_id}}?_method=DELETE" method="post">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <td><button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-remove fa-xs"></i> Delete </button></td></form>
+                </tr>
+                {{else}}
+                <div>There are no users available</div>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

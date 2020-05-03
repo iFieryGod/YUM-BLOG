@@ -1,0 +1,23 @@
+[
+  {
+    "firstName": "Goran",
+    "lastName": "Kortjie",
+    "password": "clean",
+    "emailAddress": "gkortje022@gmail.com",
+    "id": "6a182e92-53d8-2de0-e184-74e073bcecd1"
+  },
+  {
+    "firstName": "Anthony",
+    "lastName": "Samson",
+    "password": "done",
+    "emailAddress": "antMeg@gmail.com",
+    "id": "3cs3ac12-5c58-41dd-ab42-74e042348cd1"
+  },
+  {
+    "firstName": "Hendrick",
+    "lastName": "Oliver",
+    "password": "power",
+    "emailAddress": "Olover@gmail.com",
+    "id": "9a182e92-8c18-e1ed-d1d4-74e042348cd1"
+  }
+  ]
