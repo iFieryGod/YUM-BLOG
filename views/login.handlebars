@@ -1,7 +1,10 @@
 <div class="container-second">
     <div class="banner-on-login">
       <form class="sign-up-form" action="/login" method="post">
-        <input class="form-input" name="email" type="text" placeholder="Email Address">
+      {{#each errors}}
+        <span class="text-warning mx-3">{{text}}</span>
+      {{/each}}
+        <input class="form-input mt-3" name="email" type="text" placeholder="Email Address">
         <input class="form-input" name="password" type="password" placeholder="Password">
         <button type="submit">Log In</button><span id="control"></span>
       </form>
