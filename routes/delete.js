@@ -10,8 +10,8 @@ mongoose.connect('mongodb://localhost/Yummy', {
 .catch(Error => console.log(Error));
 
 // Load Strategies Model
-require('./Model/Strategy1');
-require('./Model/Strategy2');
+require('../Model/Strategy1');
+require('../Model/Strategy2');
 const Strategy1 = mongoose.model('StrategyOne');
 const Strategy2 = mongoose.model('StrategyTwo');
 

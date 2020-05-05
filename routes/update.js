@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const {ensureAuthenticated} = require('../helpers/auth')
 
 // Connect to Mongoose
 mongoose.connect('mongodb://localhost/Yummy', {
@@ -10,15 +11,15 @@ mongoose.connect('mongodb://localhost/Yummy', {
 .catch(Error => console.log(Error));
 
 // Load Strategies Model
-require('./Model/Strategy1');
-require('./Model/Strategy2');
+require('../Model/Strategy1');
+require('../Model/Strategy2');
 const Strategy1 = mongoose.model('StrategyOne');
 const Strategy2 = mongoose.model('StrategyTwo');
 
 const router = express.Router();
 module.exports = router;
 
-router.get('/post/edit/:id', (req, res) => {
+router.get('/post/edit/:id', ensureAuthenticated, (req, res) => {
   const title = "Edit Post"
   Strategy1.findById({
     _id: req.params.id
@@ -32,7 +33,7 @@ router.get('/post/edit/:id', (req, res) => {
   });
 });
 
-router.put('/post/:id', (req, res) => {
+router.put('/post/:id', ensureAuthenticated, (req, res) => {
   Strategy1.findOne({
     _id: req.params.id
   })
@@ -48,7 +49,7 @@ router.put('/post/:id', (req, res) => {
   });
 });
 
-router.get('/users/edit/:id', (req, res) => {
+router.get('/users/edit/:id', ensureAuthenticated, (req, res) => {
   const title = "Edit User"
   Strategy2.findById({
     _id: req.params.id
@@ -62,7 +63,7 @@ router.get('/users/edit/:id', (req, res) => {
   });
 });
 
-router.put('/users/:id', (req, res) => {
+router.put('/users/:id', ensureAuthenticated, (req, res) => {
   Strategy2.findOne({
     _id: req.params.id
   })

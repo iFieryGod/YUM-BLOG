@@ -1,11 +1,13 @@
 <div class="container-second">
     <div class="banner-on-login">
+      {{> _msg}}
       <form class="sign-up-form" action="/login" method="post">
       {{#each errors}}
-        <span class="text-warning mx-3">{{text}}</span>
+        <p class="text-warning text-wrap">{{text}}</p>
       {{/each}}
-        <input class="form-input mt-3" name="email" type="text" placeholder="Email Address">
-        <input class="form-input" name="password" type="password" placeholder="Password">
+      {{> _errors}}
+        <input class="form-input mt-3" name="email" type="email" placeholder="Email Address" value="{{email}}">
+        <input class="form-input" name="password" type="password" placeholder="Password" value="{{password}}">
         <button type="submit">Log In</button><span id="control"></span>
       </form>
     </div>

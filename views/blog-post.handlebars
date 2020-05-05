@@ -10,69 +10,21 @@
   </header>
   <section class="py-3" id="blog">
     <div class="container">
-      <div class="row">
+      <div class="row row-cols row-cols-md-1">
         <div class="col">
           <div class="card-columns">
-            <div class="card"><img class="img-fluid card-img-top" src="https://source.unsplash.com/random/300x199" alt="">
+            {{#each Strategy1}}
+            <div class="card text-center">
+              <a href="#"><img class="img-fluid card-img-top" src="https://source.unsplash.com/random/300x199" alt=""></a>
               <card-body>
-                <h4 class="card-title">Blog Post 1</h4><small class="text-muted">Written by Roger</small>
+                <h4 class="card-title">{{title}}</h4><small class="text-muted">Written by {{username}}</small>
                 <hr>
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas autem ex
-                  temporibus fuga odio possimus. Veniam reprehenderit inventore quasi saepe?
+                  {{comment}}
                 </p>
               </card-body>
             </div>
-            <div class="card p-3 bg-success">
-              <blockquote class="card-blockquote card-body">
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione tenetur assumenda, accusantium
-                  aliquid fuga cumque!
-                </p>
-                <footer class="blockquote"><small class="text-white">Someone Famous
-                    <cite title="Source Title">Source Title</cite></small></footer>
-              </blockquote>
-            </div>
-            <div class="card"><img class="img-fluid card-img-top" src="https://source.unsplash.com/random/301x200" alt="">
-              <card-body>
-                <h4 class="card-title">Blog Post 2</h4><small class="text-muted">Written by Lance</small>
-                <hr>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas autem ex
-                  temporibus fuga odio possimus. Veniam reprehenderit inventore quasi saepe?
-                </p>
-              </card-body>
-            </div>
-            <div class="card p-3 bg-info">
-              <blockquote class="card-blockquote card-body">
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione tenetur assumenda, accusantium
-                  aliquid fuga cumque!
-                </p>
-                <footer class="blockquote"><small class="text-white">Someone Famous
-                    <cite title="Source Title">Source Title</cite></small></footer>
-              </blockquote>
-            </div>
-            <div class="card"><img class="img-fluid card-img-top" src="https://source.unsplash.com/random/302x200" alt="">
-              <card-body>
-                <h4 class="card-title">Blog Post 3</h4><small class="text-muted">Written by Wade</small>
-                <hr>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas autem ex
-                  temporibus fuga odio possimus. Veniam reprehenderit inventore quasi saepe?
-                </p>
-              </card-body>
-            </div>
-            <div class="card p-3 bg-danger text-white">
-              <blockquote class="card-blockquote card-body">
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione tenetur assumenda, accusantium
-                  aliquid fuga cumque!
-                </p>
-                <footer class="blockquote"><small class="text-white">Someone Famous
-                    <cite title="Source Title">Source Title</cite></small></footer>
-              </blockquote>
-            </div>
+            {{/each}}
           </div>
         </div>
       </div>

@@ -51,7 +51,7 @@
     </div>
   </div>
   <section class="py-4 mb-4" id="action">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col">
           <div class="card">
@@ -70,8 +70,8 @@
               <tbody>
                 {{#each Strategy1}}
                 <tr>
-                  <td>{{title}}</td>
-                  <td><span class="text-wrap d-inline-block text-truncate">{{comment}}</span></td>
+                  <td class="font-weight-bold">{{title}}</td>
+                  <td class="text-wrap">{{comment}}</td>
                   <td><a class="btn btn-info" href="/post/edit/{{_id}}"><i class="fa fa-angle-double-right"></i>Edit</a></td>
                   <form action="/post/delete/{{_id}}?_method=DELETE" method="post">
                   <input type="hidden" name="_method" value="DELETE">

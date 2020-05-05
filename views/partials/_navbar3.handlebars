@@ -3,13 +3,22 @@
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="nav navbar-nav ml-2">
+        {{#if user}}
           <li class="nav-item active"><a class="nav-link" href="/blog">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="/post">Posts</a></li>
           <li class="nav-item"><a class="nav-link" href="/users">Users</a></li>
         </ul>
         <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="/login">Log Out</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
         </ul>
+        {{else}}
+        <li class="nav-item active"><a class="nav-link" href="/blog">Blog</a></li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/sign-up">Sign Up</a></li>
+        </ul>
+        {{/if}}
       </div>
     </div>
   </nav>

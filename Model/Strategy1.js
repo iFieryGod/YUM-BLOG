@@ -15,6 +15,14 @@ const BlogPostSchema = new Schema({
   image:{
     type: Buffer
   },
+  user: {
+    type: String,
+    required: true
+  },
+  username: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now

@@ -1,0 +1,20 @@
+<div class="container-third">
+  <div class="row">
+    <div class="col-6">
+      {{#each errors}}
+      <div id="errors" class="alert alert-danger">{{text}}<button class="close" data-dismiss="alert"><span>×</span></button></div>
+      {{/each}}
+      {{> _msg}}
+    </div>
+    <div class="banner-on-signup">
+      <form class="sign-up-form" action="/sign-up" method="post">
+        <input class="form-input" name="firstName" type="text" placeholder="First Name" value="{{firstName}}">
+        <input class="form-input" name="lastName" type="text" placeholder="Last Name" value="{{lastName}}">
+        <input class="form-input" name="emailAddress" type="email" placeholder="Email Address" value="{{emailAddress}}">
+        <input class="form-input" name="password1" type="password" placeholder="Password" value="{{password}}">
+        <input class="form-input" name="password2" type="password" placeholder="Confirm Password" value="{{confirmPassword}}">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  </div>
