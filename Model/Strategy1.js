@@ -13,7 +13,8 @@ const BlogPostSchema = new Schema({
     required: true
   },
   image:{
-    type: Buffer
+    type: String,
+    required: true
   },
   user: {
     type: String,

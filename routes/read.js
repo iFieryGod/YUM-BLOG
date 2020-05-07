@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const {ensureAuthenticated} = require('../helpers/auth')
+
 // Connect to Mongoose
 mongoose.connect('mongodb://localhost/Yummy', {
   useUnifiedTopology: true,

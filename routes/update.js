@@ -40,7 +40,9 @@ router.put('/post/:id', ensureAuthenticated, (req, res) => {
   .then(post => {
     post.comment = req.body.editor1,
     post.title = req.body.title
-
+    if(image){
+      post.image = req.file.path
+    }
     post.save()
     .then(() => {
       req.flash('success_msg', 'Successfully Updated')

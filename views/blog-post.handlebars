@@ -10,19 +10,22 @@
   </header>
   <section class="py-3" id="blog">
     <div class="container">
-      <div class="row row-cols row-cols-md-1">
+      <div class="row row-cols-1 row-cols-md-1">
         <div class="col">
           <div class="card-columns">
             {{#each Strategy1}}
             <div class="card text-center">
-              <a href="#"><img class="img-fluid card-img-top" src="https://source.unsplash.com/random/300x199" alt=""></a>
+              <a href="#"><img class="img-fluid card-img-top" src="{{image}}" alt=""></a>
               <card-body>
                 <h4 class="card-title">{{title}}</h4><small class="text-muted">Written by {{username}}</small>
                 <hr>
-                <p class="card-text">
+                <p class="card-text mb-2">
                   {{comment}}
                 </p>
               </card-body>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
             </div>
             {{/each}}
           </div>

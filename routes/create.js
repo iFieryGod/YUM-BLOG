@@ -2,6 +2,39 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const multer = require('multer');
+const path = require('path');
+const crypto = require('crypto');
+
+const router = express.Router();
+// Multer and Crypto Middleware
+// Multer diskstorage allows to specify an upload location.
+// Crypto allows us to generate a random name for the image.
+const fileStorage = multer.diskStorage({
+  destination: "/uploads",
+  filename: (req, file, cb) => {
+    crypto.pseudoRandomBytes(16, (err, raw) => {
+      if (err) return callback(err);
+      cb(null, raw.toString('hex') + path.extname(file.originalname));
+    });
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if (
+    !file.mimetype.includes("jpeg") &&
+    !file.mimetype.includes("jpg") &&
+    !file.mimetype.includes("png") &&
+    !file.mimetype.includes("gif") ||
+    file.mimetype === undefined
+  ) {
+    return cb(null, false, new Error("Only images are allowed"));
+  }
+  cb(null, true);
+}
+
+// Multer Middleware for single image upload
+router.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'));
 
 // Connect to Mongoose
 mongoose.connect('mongodb://localhost/Yummy', {
@@ -17,12 +50,10 @@ require('../Model/Strategy2');
 const Strategy1 = mongoose.model('StrategyOne');
 const Strategy2 = mongoose.model('StrategyTwo');
 
-const router = express.Router();
-module.exports = router;
-
 // Process Post Form
 router.post('/post', (req, res) => {
-  let errors = [];
+   
+ let errors = [];
 
   if(!req.body.title){
     errors.push({text: 'Please add a title'})
@@ -30,27 +61,38 @@ router.post('/post', (req, res) => {
   if(!req.body.editor1){
     errors.push({text: 'Please add some comments'})
   }
+  if(!req.file){
+    res.status (422).render('post', {
+      title: req.body.title,
+      layout2: true,
+      errors: errors
+    })
+    errors.push({text: 'Please add an image file'})
+  }
   if(errors.length > 0){
-    res.render('/post', {
+    res.render('post', {
       errors: errors,
       title: req.body.title,
-      comment: req.body.editor1
+      comment: req.body.editor1,
+      image: req.file.path,
+      layout2: true
     });
   } else{
     let newPost = {
       title: req.body.title,
       comment: req.body.editor1,
       user: req.user.id,
+      image: req.file.path,
       username: req.user.firstName
     }
     new Strategy1(newPost)
     .save()
-    .then(Strategy1 => {
+    .then(() => {
       req.flash('success_msg', 'Added Successfully');
       res.redirect('/post');
     });
     }
-});
+  });
 
 // Process sign-up form
 router.post('/sign-up', (req, res) => {
@@ -124,6 +166,8 @@ router.post('/login', (req, res, next) => {
 
 router.get('/logout', (req, res) => {
   req.logOut();
-  req.flash('success_msg', "You are logged out")
-  res.redirect('/login')
+  req.flash('success_msg', "You are logged out");
+  res.redirect('/login');
 });
+
+module.exports = router;

@@ -9,7 +9,7 @@ const passport = require('passport');
 
 const app = express();
 
-// Load Routes
+// Bringing in Load Model Routes
 require('./Model/Strategy1');
 require('./Model/Strategy2');
 
@@ -18,9 +18,10 @@ require('./config/passport')(passport);
 
 // Static folder with built-in express
 app.use(express.static("public"));
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(express.static("uploads"));
+app.use(favicon(__dirname + '/public/favicon.ico'));  
 
-// Handlebars Middleware
+// Handlebars Middleware (template engine)
 app.engine('handlebars', exphbs( {
   defaultLayout: 'main'
 }));
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Method Override
+// makes the put and delete requests easier
 app.use(methodOverride('_method'));
 
 // Express session middleware
@@ -55,6 +57,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+// Render the index page
 app.get('/', (req, res) => {
   const title = "Welcome"
   res.render('index', { 
@@ -63,15 +66,19 @@ app.get('/', (req, res) => {
   });
 });
 
+// Bringing in the read routes
 const readRouter = require('./routes/read');
 app.use(readRouter);
 
+// Bringing in the create routes
 const createRouter = require('./routes/create');
 app.use(createRouter);
 
+// Bringing in the update routes
 const updateRouter = require('./routes/update');
 app.use(updateRouter);
 
+// Bringing in the delete routes
 const deleteRouter = require('./routes/delete');
 app.use(deleteRouter);
 
