@@ -6,13 +6,13 @@ From your Gitbash you can clone this address https://github.com/iFieryGod/YUM-BL
 and use vs code to see it in live server.
 
 <h3>Prerequisites</h3>
-1. Github
+Github
 
-2. Gitbash
+Gitbash
 
-3. Visual studio code
+Visual studio code
 
-4. Internet access
+Internet access
 
 <h3>Installing</h3>
 install VS Code from https://code.visualstudio.com/
