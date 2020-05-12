@@ -2,7 +2,7 @@
 Yum Blog is a mini chat application, In short it is a blog about fashion mainly streetwear that allows users to post their images along with some text to describe the image.
 
 Getting Started
-From your Gitbash you can clone this address https://github.com/iFieryGod/Main.git
+From your Gitbash you can clone this address https://github.com/iFieryGod/YUM-BLOG.git
 and use vs code to see it in live server.
 
 <h3>Prerequisites</h3>
