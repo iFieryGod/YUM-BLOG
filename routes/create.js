@@ -36,8 +36,11 @@ const fileFilter = (req, file, cb) => {
 // Multer Middleware for single image upload
 router.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'));
 
+// DB Config
+const db = require('../config/database');
+
 // Connect to Mongoose
-mongoose.connect('mongodb://localhost/Yummy', {
+mongoose.connect(db.mongoURI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
 })

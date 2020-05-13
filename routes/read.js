@@ -2,8 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const {ensureAuthenticated} = require('../helpers/auth');
 
+// DB Config
+const db = require('../config/database');
+
 // Connect to Mongoose
-mongoose.connect('mongodb://localhost/Yummy', {
+mongoose.connect(db.mongoURI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
 })
