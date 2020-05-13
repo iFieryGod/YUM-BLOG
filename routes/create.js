@@ -19,7 +19,7 @@ const fileStorage = multer.diskStorage({
     });
   }
 });
-
+// Makes sure that their is an image loaded and not some other file. eg pdf
 const fileFilter = (req, file, cb) => {
   if (
     !file.mimetype.includes("jpeg") &&

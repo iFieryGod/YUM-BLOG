@@ -23,18 +23,23 @@ router.get('/post/edit/:id', ensureAuthenticated, (req, res) => {
   const title = "Edit Post"
   Strategy1.find({user: req.user._id}).skip(1).limit(3).lean()
   .then(postAll => {
-    console.log(postAll)
+    // console.log(postAll)
   })
   Strategy1.findById({
     _id: req.params.id
   }).lean()
   .then(post => {
-    res.render('postEdit', {
+    if(post.user != req.user._id){
+      req.flash('error', 'Not Authorized')
+      res.redirect('/post')
+    } else {
+        res.render('postEdit', {
       post: post,
       title: title,
       Strategy1:Strategy1,
       layout2: true
-    });
+    });  
+    }
   });
 });
 
