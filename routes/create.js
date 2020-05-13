@@ -82,7 +82,7 @@ router.post('/post', (req, res) => {
       comment: req.body.editor1,
       user: req.user.id,
       image: req.file.filename,
-      username: req.user.firstName
+      username: req.user.firstName + " " + req.user.lastName
     }
     new Strategy1(newPost)
     .save()

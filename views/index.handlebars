@@ -50,33 +50,18 @@
   <section class="py-3" id="info">
     <div class="container">
       <h1 class="py-3 display-4 text-white font-weight-bold" id="post-heading">See the Latest Post</h1>
-      <div class="row">
+     {{#each Strategy1}}
+      <div class="row mt-4">
         <div class="col-md-6 align-self-center blog-post-messages">
-          <h2>Drip Dungeons</h2><small class="text-muted">- Date posted</small>
-          <p class="text-justify">"This is the kind of fashion i grew up on - a good pair of trainers, great denim - and i will always love high-end-streetwear."
-            <blockquote></blockquote><small class="text-muted">Author:</small> Nelson Wills
+          <h2>{{title}}</h2><small class="text-muted">- Date posted: {{date}}</small>
+          <p class="text-justify">"{{comment}}"
+            <blockquote></blockquote><small class="text-muted">Author:</small> {{username}}
           </p><a class="btn btn-danger btn-lg my-1" href="#">Read More</a>
         </div>
-        <div class="col-md-6 blog-pictures-right"><a href="./images/nico-marks-real.jpg" data-toggle="lightbox"><img class="img-fluid" src="./images/nico-marks-real.jpg" alt=""></a></div>
+        <div class="col-md-6 blog-pictures-right"><a href="./images/{{image}}" data-toggle="lightbox">
+        <img class="img-fluid" src="./images/{{image}}" alt=""></a></div>
       </div>
-      <div class="row mt-3">
-        <div class="col-md-6" id="blog-pictures-left"><a href="./images/eddy-lackmann.jpg" data-toggle="lightbox"><img class="img-fluid" src="./images/eddy-lackmann.jpg" alt=""></a></div>
-        <div class="col-md-6 align-self-center">
-          <h3>Nike Quote</h3><small class="text-muted">- Date posted</small>
-          <p class="text-justify">"I firmly believe that with the right footwear one can rule the world.""
-            <blockquote></blockquote><small class="text-muted">Author:</small> Chris Edwards
-          </p><a class="btn btn-danger btn-lg my-1" href="#">Read More</a>
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-md-6 align-self-center blog-post-messages">
-          <h3>Swing Terror</h3><small class="text-muted">- Date posted</small>
-          <p class="text-justify">"Don't be into trends. Don't make fashion own you, but you decide what you are, what you want to express by the way you dress and the way to live."
-            <blockquote></blockquote><small class="text-muted">Author:</small> Kylie Swing
-          </p><a class="btn btn-danger btn-lg my-1" href="#">Learn More</a>
-        </div>
-        <div class="col-md-6 blog-pictures-right"><a href="./images/sin-flow.jpg" data-toggle="lightbox"><img class="img-fluid" src="./images/sin-flow.jpg" alt=""></a></div>
-      </div>
+      {{/each}}
     </div>
   </section>
   <section class="text-center p-5 text-white" id="news-letter">

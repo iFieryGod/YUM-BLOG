@@ -1,3 +1,4 @@
+// Checking if the user is Authenticated to access certian pages on the application.
 module.exports = {
   ensureAuthenticated: function(req, res, next) {
     if(req.isAuthenticated()) {

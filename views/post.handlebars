@@ -53,14 +53,11 @@
     </div>
   </div>
   <section class="py-4 mb-4" id="action">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col">
-          <div class="card">
-            <div class="card-header">
-              <h4>Latest Post</h4>
-            </div>
-            <table class="table table-hover">
+            <h4>Latest Post</h4>
+            <table class="table table-responsive table-hover table-dark">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">Title</th>
@@ -73,7 +70,7 @@
                 {{#each Strategy1}}
                 <tr>
                   <td class="font-weight-bold">{{title}}</td>
-                  <td class="text-wrap">{{comment}}</td>
+                  <td class="text-wrap">{{truncate comment 100}}</td>
                   <td><a class="btn btn-info" href="/post/edit/{{_id}}"><i class="fa fa-angle-double-right"></i>Edit</a></td>
                   <form action="/post/delete/{{_id}}?_method=DELETE" method="post">
                   <input type="hidden" name="_method" value="DELETE">
@@ -85,7 +82,6 @@
               </tbody>
             </table>
           </div>
-        </div>
       </div>
     </div>
   </section>

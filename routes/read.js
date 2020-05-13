@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const {ensureAuthenticated} = require('../helpers/auth')
+const {ensureAuthenticated} = require('../helpers/auth');
 
 // Connect to Mongoose
 mongoose.connect('mongodb://localhost/Yummy', {
@@ -36,7 +36,7 @@ router.get('/post', ensureAuthenticated, (req, res) => {
 // Render the users page
 router.get('/users', ensureAuthenticated, (req, res) => {
   const title = "Users"
-  Strategy2.find({user: req.user.id}).lean()
+  Strategy2.find({_id: req.user.id}).lean()
   .sort({Date: 'desc'})
   .then(Strategy2 => {
     res.render('users', { 

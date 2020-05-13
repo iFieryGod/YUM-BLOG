@@ -43,6 +43,7 @@
      CKEDITOR.config.autoParagraph = false;
      CKEDITOR.config.entities = false;
      CKEDITOR.config.basicEntities = false;
+     CKEDITOR.config.fillEmptyBlocks = false;
      CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
      CKEDITOR.config.allowedContent = 'u em strong ul li;a[!href,target]';
      CKEDITOR.config.emailProtection = 'mt(NAME,DOMAIN,SUBJECT,BODY)';
@@ -102,6 +103,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
   <script>
     $('#year').text(new Date().getFullYear());
     $(document).on('click', '[data-toggle="lightbox"]', function(event) {

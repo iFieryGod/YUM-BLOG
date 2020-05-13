@@ -25,6 +25,7 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 
 // Handlebars Middleware (template engine)
 app.engine('handlebars', exphbs( {
+  helpers: require("./helpers/hbs"),
   defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
@@ -62,12 +63,14 @@ app.use(function(req, res, next) {
 // Render the index page
 app.get('/', (req, res) => {
   const title = "Welcome"
-  res.render('index', { 
+  Strategy1.find({}).limit(3).lean()
+  .then(Strategy1 => {
+    res.render('index', {
+    Strategy1: Strategy1,   
     title: title,
-    Strategy1:Strategy1,
-    Strategy2: Strategy2,
     layout3: true
   });
+  })
 });
 
 // Bringing in the read routes

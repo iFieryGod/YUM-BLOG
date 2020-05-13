@@ -21,6 +21,10 @@ module.exports = router;
 
 router.get('/post/edit/:id', ensureAuthenticated, (req, res) => {
   const title = "Edit Post"
+  Strategy1.find({user: req.user._id}).skip(1).limit(3).lean()
+  .then(postAll => {
+    console.log(postAll)
+  })
   Strategy1.findById({
     _id: req.params.id
   }).lean()
@@ -32,10 +36,6 @@ router.get('/post/edit/:id', ensureAuthenticated, (req, res) => {
       layout2: true
     });
   });
-  Strategy1.find({user: req.user._id}).lean()
-  .then(postAll => {
-    console.log(postAll)
-  })
 });
 
 router.put('/post/:id', ensureAuthenticated, (req, res) => {
@@ -43,7 +43,6 @@ router.put('/post/:id', ensureAuthenticated, (req, res) => {
     _id: req.params.id
   })
   .then(post => {
-    console.log(post)
     post.comment = req.body.editor1,
     post.title = req.body.title
     if(req.file){
