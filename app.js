@@ -6,19 +6,21 @@ const methodOverride = require ('method-override');
 const bodyParser = require('body-parser');
 const favicon = require('express-favicon');
 const passport = require('passport');
+const mongoose = require('mongoose');
 
 const app = express();
 
-// Bringing in Load Model Routes
+// Load Strategies Model
 require('./Model/Strategy1');
 require('./Model/Strategy2');
+const Strategy1 = mongoose.model('StrategyOne');
+const Strategy2 = mongoose.model('StrategyTwo');
 
 // Passport
 require('./config/passport')(passport);
 
 // Static folder with built-in express
 app.use(express.static("public"));
-app.use(express.static("uploads"));
 app.use(favicon(__dirname + '/public/favicon.ico'));  
 
 // Handlebars Middleware (template engine)
@@ -62,6 +64,8 @@ app.get('/', (req, res) => {
   const title = "Welcome"
   res.render('index', { 
     title: title,
+    Strategy1:Strategy1,
+    Strategy2: Strategy2,
     layout3: true
   });
 });

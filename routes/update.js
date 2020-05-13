@@ -28,9 +28,14 @@ router.get('/post/edit/:id', ensureAuthenticated, (req, res) => {
     res.render('postEdit', {
       post: post,
       title: title,
+      Strategy1:Strategy1,
       layout2: true
     });
   });
+  Strategy1.find({user: req.user._id}).lean()
+  .then(postAll => {
+    console.log(postAll)
+  })
 });
 
 router.put('/post/:id', ensureAuthenticated, (req, res) => {
@@ -38,10 +43,11 @@ router.put('/post/:id', ensureAuthenticated, (req, res) => {
     _id: req.params.id
   })
   .then(post => {
+    console.log(post)
     post.comment = req.body.editor1,
     post.title = req.body.title
-    if(image){
-      post.image = req.file.path
+    if(req.file){
+      post.image = req.file
     }
     post.save()
     .then(() => {

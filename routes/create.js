@@ -11,7 +11,7 @@ const router = express.Router();
 // Multer diskstorage allows to specify an upload location.
 // Crypto allows us to generate a random name for the image.
 const fileStorage = multer.diskStorage({
-  destination: "/uploads",
+  destination: "public/images/",
   filename: (req, file, cb) => {
     crypto.pseudoRandomBytes(16, (err, raw) => {
       if (err) return callback(err);
@@ -52,7 +52,6 @@ const Strategy2 = mongoose.model('StrategyTwo');
 
 // Process Post Form
 router.post('/post', (req, res) => {
-   
  let errors = [];
 
   if(!req.body.title){
@@ -74,7 +73,7 @@ router.post('/post', (req, res) => {
       errors: errors,
       title: req.body.title,
       comment: req.body.editor1,
-      image: req.file.path,
+      image: req.file.filename,
       layout2: true
     });
   } else{
@@ -82,7 +81,7 @@ router.post('/post', (req, res) => {
       title: req.body.title,
       comment: req.body.editor1,
       user: req.user.id,
-      image: req.file.path,
+      image: req.file.filename,
       username: req.user.firstName
     }
     new Strategy1(newPost)
