@@ -14,10 +14,20 @@ const app = express();
 require('./Model/Strategy1');
 require('./Model/Strategy2');
 const Strategy1 = mongoose.model('StrategyOne');
-const Strategy2 = mongoose.model('StrategyTwo');
 
 // Passport
 require('./config/passport')(passport);
+
+// DB Config
+const db = require('./config/database');
+
+// Connect to Mongoose
+mongoose.connect(db.mongoURI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+})
+.then(() => console.log('MongoDB connected'))
+.catch(Error => console.log(Error));
 
 // Static folder with built-in express
 app.use(express.static("public"));
@@ -89,7 +99,8 @@ app.use(updateRouter);
 const deleteRouter = require('./routes/delete');
 app.use(deleteRouter);
 
-const port = 3000
+// Setting up port access for HEROKU and locally for 3000
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
