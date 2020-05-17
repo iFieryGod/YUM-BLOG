@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const favicon = require('express-favicon');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const compression = require('compression');
 
 const app = express();
 
@@ -28,6 +29,8 @@ mongoose.connect(db.mongoURI, {
 })
 .then(() => console.log('MongoDB connected'))
 .catch(Error => console.log(Error));
+
+app.use(compression());
 
 // Static folder with built-in express
 app.use(express.static("public"));
