@@ -11,7 +11,7 @@ mongoose.connect(db.mongoURI, {
   useNewUrlParser: true
 })
 .then(() => console.log('MongoDB connected'))
-.catch(Error => console.log(Error));
+.catch(Error => debug(`${Error} ${supportsColor.stderr('Cannot connect to MongoURI')}`));
 
 // Load Strategies Model
 require('../Model/Strategy1');
@@ -23,11 +23,7 @@ const router = express.Router();
 module.exports = router;
 
 router.get('/post/edit/:id', ensureAuthenticated, (req, res) => {
-  const title = "Edit Post"
-  Strategy1.find({user: req.user._id}).skip(1).limit(3).lean()
-  .then(postAll => {
-    // console.log(postAll)
-  })
+  const title = 'Edit Post'
   Strategy1.findById({
     _id: req.params.id
   }).lean()
@@ -65,7 +61,7 @@ router.put('/post/:id', ensureAuthenticated, (req, res) => {
 });
 
 router.get('/users/edit/:id', ensureAuthenticated, (req, res) => {
-  const title = "Edit User"
+  const title = 'Edit User'
   Strategy2.findById({
     _id: req.params.id
   }).lean()

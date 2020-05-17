@@ -4,10 +4,13 @@ const flash = require ('connect-flash');
 const session = require ('express-session');
 const methodOverride = require ('method-override');
 const bodyParser = require('body-parser');
-const favicon = require('express-favicon');
+const favicon = require('serve-favicon');
+const path = require('path');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const compression = require('compression');
+const debug = require('debug')('name_to_call');
+const supportsColor = require('supports-color');
 
 const app = express();
 
@@ -28,17 +31,17 @@ mongoose.connect(db.mongoURI, {
   useNewUrlParser: true
 })
 .then(() => console.log('MongoDB connected'))
-.catch(Error => console.log(Error));
+.catch(Error => debug(`${Error} ${supportsColor.stderr('Cannot connect to MongoURI')}`));
 
 app.use(compression());
 
 // Static folder with built-in express
-app.use(express.static("public"));
-app.use(favicon(__dirname + '/public/favicon.ico'));  
+app.use(express.static('public'));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));  
 
 // Handlebars Middleware (template engine)
 app.engine('handlebars', exphbs( {
-  helpers: require("./helpers/hbs"),
+  helpers: require('./helpers/hbs'),
   defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
@@ -75,7 +78,7 @@ app.use(function(req, res, next) {
 
 // Render the index page
 app.get('/', (req, res) => {
-  const title = "Welcome"
+  const title = 'Welcome'
   Strategy1.find({}).limit(3).lean()
   .then(Strategy1 => {
     res.render('index', {
@@ -106,5 +109,5 @@ app.use(deleteRouter);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log(`App is listening on port ${port}`);
+  debug(`App is listening on port ${port}`);
 });

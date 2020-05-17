@@ -10,7 +10,7 @@ mongoose.connect(db.mongoURI, {
   useNewUrlParser: true
 })
 .then(() => console.log('MongoDB connected'))
-.catch(Error => console.log(Error));
+.catch(Error => debug(`${Error} ${supportsColor.stderr('Cannot connect to MongoURI')}`));
 
 // Load Strategies Model
 require('../Model/Strategy1');
@@ -23,7 +23,7 @@ module.exports = router;
 
 // Render Posts
 router.get('/post', (req, res) => {
-  const title = "Post"
+  const title = 'Post'
   Strategy1.find({}).lean()
   .sort({Date: 'desc'})
   .then(Strategy1 => {
@@ -40,14 +40,14 @@ router.delete('/post/delete/:id', (req, res) => {
     _id: req.params.id
   })
   .then(() => {
-   req.flash('success_msg', "Post Deleted") 
+   req.flash('success_msg', 'Post Deleted') 
    res.redirect('/post')
    });
  });
 
 //  Render Users
  router.get('/users', (req, res) => {
-  const title = "Users"
+  const title = 'Users'
   Strategy2.find({}).lean()
   .sort({Date: 'desc'})
   .then(Strategy2 => {

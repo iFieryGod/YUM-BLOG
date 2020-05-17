@@ -11,7 +11,7 @@ const router = express.Router();
 // Multer diskstorage allows to specify an upload location.
 // Crypto allows us to generate a random name for the image.
 const fileStorage = multer.diskStorage({
-  destination: "public/images/",
+  destination: 'public/images/',
   filename: (req, file, cb) => {
     crypto.pseudoRandomBytes(16, (err, raw) => {
       if (err) return callback(err);
@@ -22,13 +22,13 @@ const fileStorage = multer.diskStorage({
 // Makes sure that their is an image loaded and not some other file. eg pdf
 const fileFilter = (req, file, cb) => {
   if (
-    !file.mimetype.includes("jpeg") &&
-    !file.mimetype.includes("jpg") &&
-    !file.mimetype.includes("png") &&
-    !file.mimetype.includes("gif") ||
+    !file.mimetype.includes('jpeg') &&
+    !file.mimetype.includes('jpg') &&
+    !file.mimetype.includes('png') &&
+    !file.mimetype.includes('gif') ||
     file.mimetype === undefined
   ) {
-    return cb(null, false, new Error("Only images are allowed"));
+    return cb(null, false, new Error('Only images are allowed'));
   }
   cb(null, true);
 }
@@ -45,7 +45,7 @@ mongoose.connect(db.mongoURI, {
   useNewUrlParser: true
 })
 .then(() => console.log('MongoDB connected'))
-.catch(Error => console.log(Error));
+.catch(Error => debug(`${Error} ${supportsColor.stderr('Cannot connect to MongoURI')}`));
 
 // Load Strategies Model
 require('../Model/Strategy1');
@@ -131,7 +131,7 @@ router.post('/sign-up', (req, res) => {
     Strategy2.findOne({emailAddress: req.body.emailAddress})
     .then(user => {
       if(user){
-        req.flash('error_msg', "email already registered");
+        req.flash('error_msg', 'email already registered');
         res.redirect('sign-up')
       } else {
         const newUser = new Strategy2({
@@ -168,7 +168,7 @@ router.post('/login', (req, res, next) => {
 
 router.get('/logout', (req, res) => {
   req.logOut();
-  req.flash('success_msg', "You are logged out");
+  req.flash('success_msg', 'You are logged out');
   res.redirect('/login');
 });
 

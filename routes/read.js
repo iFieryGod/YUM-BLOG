@@ -11,7 +11,7 @@ mongoose.connect(db.mongoURI, {
   useNewUrlParser: true
 })
 .then(() => console.log('MongoDB connected'))
-.catch(Error => console.log(Error));
+.catch(Error => debug(`${Error} ${supportsColor.stderr('Cannot connect to MongoURI')}`));
 
 // Load Strategies Model
 require('../Model/Strategy1');
@@ -24,7 +24,7 @@ module.exports = router;
 
 // Render the post form
 router.get('/post', ensureAuthenticated, (req, res) => {
-  const title = "Post"
+  const title = 'Post'
   Strategy1.find({user: req.user.id}).lean()
   .sort({Date: 'desc'})
   .then(Strategy1 => {
@@ -38,7 +38,7 @@ router.get('/post', ensureAuthenticated, (req, res) => {
 
 // Render the users page
 router.get('/users', ensureAuthenticated, (req, res) => {
-  const title = "Users"
+  const title = 'Users'
   Strategy2.find({_id: req.user.id}).lean()
   .sort({Date: 'desc'})
   .then(Strategy2 => {
@@ -52,7 +52,7 @@ router.get('/users', ensureAuthenticated, (req, res) => {
 
 // Render Login Page
 router.get('/login', (req, res) => {
-  const title = "Login"
+  const title = 'Login'
   res.render('login', { 
     title: title,
     login: true
@@ -61,7 +61,7 @@ router.get('/login', (req, res) => {
 
 // Render the Blog page
 router.get('/blog', (req, res) => {
-  const title = "Blog"
+  const title = 'Blog'
   Strategy1.find({}).lean()
   .sort({Date: 'desc'})
   .then(Strategy1 => {
