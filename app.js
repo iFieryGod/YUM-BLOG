@@ -10,9 +10,10 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const compression = require('compression');
 const debug = require('debug')('name_to_call');
-const supportsColor = require('supports-color');
 
 const app = express();
+
+app.use(compression());
 
 // Load Strategies Model
 require('./Model/Strategy1');
@@ -29,11 +30,7 @@ const db = require('./config/database');
 mongoose.connect(db.mongoURI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch(Error => debug(`${Error} ${supportsColor.stderr('Cannot connect to MongoURI')}`));
-
-app.use(compression());
+});
 
 // Static folder with built-in express
 app.use(express.static('public'));

@@ -8,9 +8,7 @@ const db = require('../config/database');
 mongoose.connect(db.mongoURI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch(Error => debug(`${Error} ${supportsColor.stderr('Cannot connect to MongoURI')}`));
+});
 
 // Load Strategies Model
 require('../Model/Strategy1');
