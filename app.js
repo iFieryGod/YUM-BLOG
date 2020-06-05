@@ -16,8 +16,8 @@ const app = express();
 app.use(compression());
 
 // Load Strategies Model
-// require('./Model/Strategy1');
-// require('./Model/Strategy2');
+require('./Model/Strategy1');
+require('./Model/Strategy2');
 // const Strategy1 = mongoose.model('StrategyOne');
 
 // Passport
