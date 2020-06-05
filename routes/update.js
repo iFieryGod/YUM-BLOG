@@ -37,7 +37,10 @@ router.get('/post/edit/:id', ensureAuthenticated, (req, res) => {
       layout2: true
     });  
     }
-  });
+  })
+  .catch(() => {
+    res.status(500)
+  })
 });
 
 router.put('/post/:id', ensureAuthenticated, (req, res) => {
@@ -55,7 +58,10 @@ router.put('/post/:id', ensureAuthenticated, (req, res) => {
       req.flash('success_msg', 'Successfully Updated')
       res.redirect('/post')
     });
-  });
+  })
+  .catch(() => {
+    res.status(500)
+  })
 });
 
 router.get('/users/edit/:id', ensureAuthenticated, (req, res) => {
@@ -69,7 +75,10 @@ router.get('/users/edit/:id', ensureAuthenticated, (req, res) => {
       title: title,
       layout2: true
     });
-  });
+  })
+  .catch(() => {
+    res.status(500)
+  })
 });
 
 router.put('/users/:id', ensureAuthenticated, (req, res) => {
@@ -84,6 +93,12 @@ router.put('/users/:id', ensureAuthenticated, (req, res) => {
     .then(() => {
       req.flash('success_msg', 'Successfully Updated')
       res.redirect('/users')
-    });
-  });
+    })
+    .catch(() => {
+      res.status(500)
+    })
+  })
+  .catch(() => {
+    res.status(500)
+  })
 });

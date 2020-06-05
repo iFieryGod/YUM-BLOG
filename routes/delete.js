@@ -30,7 +30,10 @@ router.get('/post', (req, res) => {
       Strategy1:Strategy1,
       layout2: true
     });
-  });
+  })
+  .catch(() => {
+    res.status(500)
+  })
 });
 
 router.delete('/post/delete/:id', (req, res) => {
@@ -40,7 +43,10 @@ router.delete('/post/delete/:id', (req, res) => {
   .then(() => {
    req.flash('success_msg', 'Post Deleted') 
    res.redirect('/post')
-   });
+   })
+   .catch(() => {
+     res.status(500)
+   })
  });
 
 //  Render Users
@@ -54,7 +60,10 @@ router.delete('/post/delete/:id', (req, res) => {
       Strategy2: Strategy2,
       layout2: true
     });
-  });
+  })
+  .catch(() => {
+    res.status(500)
+  })
 });
 
 router.delete('/users/delete/:id', (req, res) => {
@@ -64,5 +73,8 @@ router.delete('/users/delete/:id', (req, res) => {
   .then(() => {
     req.flash('success_msg', 'Successfully Deleted')
     res.redirect('/users')
-  });
+  })
+  .catch(() => {
+    res.status(500)
+  })
 });

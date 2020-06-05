@@ -90,7 +90,10 @@ router.post('/post', (req, res) => {
     .then(() => {
       req.flash('success_msg', 'Added Successfully');
       res.redirect('/post');
-    });
+    })
+    .catch(() => {
+      res.status(500)
+    })
     }
   });
 
@@ -146,11 +149,17 @@ router.post('/sign-up', (req, res) => {
           .then(() => {
             req.flash('success_msg', 'You are now registered and can log in');
             res.redirect('login');
-            });
+            })
+            .catch(() => {
+              res.status(500)
+            })
           });
           if(err) throw err;
         });
       }
+    })
+    .catch(() => {
+      res.status(500)
     })
   }
 });

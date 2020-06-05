@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
   });
   })
   .catch(() => {
-    res.status(404)
+    res.status(500)
   }) 
 });
 
@@ -47,7 +47,7 @@ router.get('/post', ensureAuthenticated, (req, res) => {
     });
   })
   .catch(() => {
-    res.status(404)
+    res.status(500)
   })
 });
 
@@ -64,7 +64,7 @@ router.get('/users', ensureAuthenticated, (req, res) => {
     });
   })
   .catch(() => {
-    res.status(404)
+    res.status(500)
   })
 });
 
@@ -90,7 +90,7 @@ router.get('/blog', (req, res) => {
     });
   })
   .catch(() => {
-    res.status(404)
+    res.status(500)
   })
 });
 
