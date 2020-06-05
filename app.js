@@ -28,7 +28,6 @@ const db = require('./config/database');
 
 // Connect to Mongoose
 mongoose.connect(db.mongoURI, {
-  useUnifiedTopology: true,
   useNewUrlParser: true
 });
 
