@@ -21,8 +21,8 @@ const router = express.Router();
 module.exports = router;
 
 // Render the index page
-router.get('/', async (req, res) => {
-  await Strategy1.find({}).limit(3).lean()
+router.get('/', (req, res) => {
+  Strategy1.find({}).limit(3).lean()
   .then(Strategy1 => {
     res.render('index', {
     Strategy1: Strategy1,
