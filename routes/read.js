@@ -29,8 +29,8 @@ router.get('/', (req, res) => {
     layout3: true
   });
   })
-  .catch((err) => {
-    console.log(err)
+  .catch(() => {
+    res.status(404)
   }) 
 });
 
@@ -45,7 +45,10 @@ router.get('/post', ensureAuthenticated, (req, res) => {
       Strategy1:Strategy1,
       layout2: true
     });
-  });
+  })
+  .catch(() => {
+    res.status(404)
+  })
 });
 
 // Render the users page
@@ -59,7 +62,10 @@ router.get('/users', ensureAuthenticated, (req, res) => {
       Strategy2: Strategy2,
       layout2: true
     });
-  });
+  })
+  .catch(() => {
+    res.status(404)
+  })
 });
 
 // Render Login Page
@@ -82,7 +88,10 @@ router.get('/blog', (req, res) => {
       Strategy1:Strategy1,
       layout3: true
     });
-  });
+  })
+  .catch(() => {
+    res.status(404)
+  })
 });
 
 // SignUp for validation
