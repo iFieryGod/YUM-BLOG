@@ -20,6 +20,20 @@ const Strategy2 = mongoose.model('StrategyTwo');
 const router = express.Router();
 module.exports = router;
 
+// Render the index page
+router.get('/', async (req, res) => {
+  await Strategy1.find({}).limit(3).lean()
+  .then(Strategy1 => {
+    res.render('index', {
+    Strategy1: Strategy1,
+    layout3: true
+  });
+  })
+  .catch((err) => {
+    console.log(err)
+  }) 
+});
+
 // Render the post form
 router.get('/post', ensureAuthenticated, (req, res) => {
   const title = 'Post'

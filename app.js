@@ -16,9 +16,9 @@ const app = express();
 app.use(compression());
 
 // Load Strategies Model
-require('./Model/Strategy1');
-require('./Model/Strategy2');
-const Strategy1 = mongoose.model('StrategyOne');
+// require('./Model/Strategy1');
+// require('./Model/Strategy2');
+// const Strategy1 = mongoose.model('StrategyOne');
 
 // Passport
 require('./config/passport')(passport);
@@ -71,20 +71,6 @@ app.use(function(req, res, next) {
   res.locals.error = req.flash('error');
   res.locals.user = req.user || null;
   next();
-});
-
-// Render the index page
-app.get('/', async (req, res) => {
-  await Strategy1.find({}).limit(3).lean()
-  .then(Strategy1 => {
-    res.render('index', {
-    Strategy1: Strategy1,
-    layout3: true
-  });
-  })
-  .catch((err) => {
-    console.log(err)
-  }) 
 });
 
 // Bringing in the read routes
