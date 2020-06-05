@@ -4,5 +4,5 @@ if(process.env.NODE_ENV === 'production'){
     mongoURI: 'mongodb+srv://Goran:foM8NPKwyicEV3ff@yum-vlcai.mongodb.net/test?retryWrites=true&w=majority'
   }
 } else {
-  module.exports = {mongoURI: 'mongodb://localhost/Yummy'}
+  module.exports = {mongoURI: 'mongodb://localhost/Yumblog'}
 }

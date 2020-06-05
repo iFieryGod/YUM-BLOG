@@ -22,11 +22,7 @@ const BlogPostSchema = new Schema({
   username: {
     type: String,
     required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
   }
-});
+}, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }});
 
 mongoose.model('StrategyOne', BlogPostSchema);

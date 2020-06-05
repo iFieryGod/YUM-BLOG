@@ -24,6 +24,6 @@ const UsersSchema = new Schema({
     type: String,
     require: true
   }
-});
+}, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }});
 
 mongoose.model('StrategyTwo', UsersSchema);
