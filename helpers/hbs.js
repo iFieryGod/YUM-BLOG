@@ -17,7 +17,7 @@ module.exports = {
   },
   realDate: function (str){
     let utc = new Date(str);
-    momentFormat = utc.setHours( utc.getHours() + 2)
+    // momentFormat = utc.setHours( utc.getHours() + 2)
     momentFormat = moment(momentFormat)
     timeComponent = momentFormat.utc().format("MMMM Do YYYY, h:mm:ss a");
     return newTime = moment([timeComponent], "MMMM Do YYYY, h:mm:ss a").fromNow()
