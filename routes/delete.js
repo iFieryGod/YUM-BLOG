@@ -18,7 +18,7 @@ const Strategy2 = mongoose.model('StrategyTwo');
 const router = express.Router();
 module.exports = router;
 
-// Render Posts
+// Getting all the posts available in the mongoDB
 router.get('/post', (req, res) => {
   const title = 'Post'
   Strategy1.find({}).lean()
@@ -34,7 +34,7 @@ router.get('/post', (req, res) => {
     res.status(500)
   })
 });
-
+// deleting a post by its ID from the mongoDB
 router.delete('/post/delete/:id', (req, res) => {
   Strategy1.deleteOne({
     _id: req.params.id
@@ -48,7 +48,7 @@ router.delete('/post/delete/:id', (req, res) => {
    })
  });
 
-//  Render Users
+// get all of the users information from the mongoDB
  router.get('/users', (req, res) => {
   const title = 'Users'
   Strategy2.find({}).lean()
@@ -64,7 +64,7 @@ router.delete('/post/delete/:id', (req, res) => {
     res.status(500)
   })
 });
-
+// Deleting a user in the MongoDB by their ID
 router.delete('/users/delete/:id', (req, res) => {
   Strategy2.deleteOne({
     _id: req.params.id

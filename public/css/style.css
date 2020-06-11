@@ -31,7 +31,7 @@ body {
 }
 
 .carousel-image-3 {
-  background:linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .5)), url('../images/willspirit-sbln-9MRRM_hV4qA-unsplash.jpg') no-repeat center;
+  background:linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .5)), url('../images/chris-henry-fXAa4-GHudU-unsplash.jpg') no-repeat center;
   background-size: cover;
   
 }
@@ -90,9 +90,12 @@ body {
 .text-muted {
   padding-left: 5px;
 }
+div.bg-pink {
+  background-color: deeppink;
+}
 
 .edit-page-color {
-  background-color: #EF959C;
+  background-color: deeppink;
 }
 @media(max-width: 500px){
   .blog-post-messages{
@@ -100,5 +103,15 @@ body {
   }
   .blog-pictures-right{
     order: 1;
+  }
+  #home-heading {
+    position: relative;
+    height: 400px;
+    background: url('../images/brunel-john.jpg') no-repeat center;
+    background-size: 50rem;
+    background-color: deeppink;
+    background-attachment: fixed;
+    text-align: center;
+    color: #fff;
   }
 }

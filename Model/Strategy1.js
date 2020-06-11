@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
-// Create Schema
+// Create the posts Schema
 const BlogPostSchema = new Schema({
   title:{
     type: String,
@@ -23,6 +24,7 @@ const BlogPostSchema = new Schema({
     type: String,
     required: true
   }
-}, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }});
+}, 
+{ timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }});
 
 mongoose.model('StrategyOne', BlogPostSchema);

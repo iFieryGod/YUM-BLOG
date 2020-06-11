@@ -7,16 +7,10 @@
       </div>
     </div>
   </header>
-  <section class="py-4 mb-4" id="actions">
+  <section class="py-5 mb-5" id="actions">
     <div class="container">
       <div class="row">
         <div class="col-md-3 mb-3"><a class="btn btn-primary btn-block" href="#" data-toggle="modal" data-target="#addPost"><i class="fas fa-plus"></i> Add Post</a></div>
-        <div class="col-md-6 ml-auto">
-          <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search" /><span class="input-group-btn">
-              <button class="btn btn-primary">Search</button></span>
-          </div>
-        </div>
       </div>
     </div>
     {{> _errors}}
@@ -57,13 +51,13 @@
       <div class="row">
         <div class="col">
             <h4>Latest Post</h4>
-            <table class="table table-responsive table-hover table-dark">
+            <table class="table table-responsive-md table-hover table-dark">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">Title</th>
                   <th scope="col">Comments</th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
+                  <th scope="col">#</th>
+                  <th scope="col">#</th>
                 </tr>
               </thead>
               <tbody>
@@ -77,7 +71,7 @@
                   <td><button class="btn btn-danger text-white" type="submit"><i class="fa fa-remove"></i> Delete</button></td></form>
                 </tr>
                 {{else}}
-                <p>No Posts are yet available</p>
+                <div>No Posts are yet available</div>
                 {{/each}}
               </tbody>
             </table>

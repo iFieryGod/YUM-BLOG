@@ -19,8 +19,10 @@ const Strategy2 = mongoose.model('StrategyTwo');
 const router = express.Router();
 module.exports = router;
 
+// Get a single post by its ID
 router.get('/post/edit/:id', ensureAuthenticated, (req, res) => {
   const title = 'Edit Post'
+  let username = req.user.firstName
   Strategy1.findById({
     _id: req.params.id
   }).lean()
@@ -33,6 +35,7 @@ router.get('/post/edit/:id', ensureAuthenticated, (req, res) => {
       post: post,
       title: title,
       Strategy1:Strategy1,
+      username: username,
       layout2: true
     });  
     }
@@ -41,7 +44,7 @@ router.get('/post/edit/:id', ensureAuthenticated, (req, res) => {
     res.status(500)
   })
 });
-
+// Update the post with the given ID and save the changes to MongoDB
 router.put('/post/:id', ensureAuthenticated, (req, res) => {
   Strategy1.findOne({
     _id: req.params.id
@@ -62,9 +65,10 @@ router.put('/post/:id', ensureAuthenticated, (req, res) => {
     res.status(500)
   })
 });
-
+// Get a single user object from mongoDB
 router.get('/users/edit/:id', ensureAuthenticated, (req, res) => {
   const title = 'Edit User'
+  let username = req.user.firstName
   Strategy2.findById({
     _id: req.params.id
   }).lean()
@@ -72,6 +76,7 @@ router.get('/users/edit/:id', ensureAuthenticated, (req, res) => {
     res.render('userEdit', {
       user: user, 
       title: title,
+      username: username,
       layout2: true
     });
   })
@@ -79,7 +84,7 @@ router.get('/users/edit/:id', ensureAuthenticated, (req, res) => {
     res.status(500)
   })
 });
-
+// Update the user information with the provided ID ans save the changes to MongoDb
 router.put('/users/:id', ensureAuthenticated, (req, res) => {
   Strategy2.findOne({
     _id: req.params.id
@@ -87,7 +92,6 @@ router.put('/users/:id', ensureAuthenticated, (req, res) => {
   .then(user => {
     user.firstName = req.body.name,
     user.emailAddress = req.body.email
-
     user.save()
     .then(() => {
       req.flash('success_msg', 'Successfully Updated')

@@ -1,3 +1,4 @@
+const moment = require('moment');
 // Making sure that if the posts that users enter are too long, the words are truncated.
 module.exports = {
   truncate: function(str, len){
@@ -9,5 +10,16 @@ module.exports = {
       return new_str + '...';
     }
     return str;
+  },
+  realTime: function(str){
+   let momentFormat = moment(str);
+   return dateComponent = momentFormat.utc().format("MMM Do YY");
+  },
+  realDate: function (str){
+    let utc = new Date(str);
+    momentFormat = utc.setHours( utc.getHours() + 2)
+    momentFormat = moment(momentFormat)
+    timeComponent = momentFormat.utc().format("MMMM Do YYYY, h:mm:ss a");
+    return newTime = moment([timeComponent], "MMMM Do YYYY, h:mm:ss a").fromNow()
   }
-}
+} 

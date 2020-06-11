@@ -7,7 +7,7 @@ const Strategy2 = mongoose.model('StrategyTwo');
 
 module.exports = function(passport){
   passport.use(new LocalStrategy({usernameField: 'email'}, (email, password, done) => {
-    // Match the User
+    // User Authentication, Match if user provided email is in the MongoDB 
     Strategy2.findOne({
       emailAddress: email
     }).then(user => {
@@ -15,7 +15,7 @@ module.exports = function(passport){
         return done(null, false, {message: 'No user found'});
       }
 
-      // Match password
+      // password Authentication, Match if user provided password matches the password in the mongoDb
       bcrypt.compare(password, user.password, (err, isMatch) => {
         if(err) throw err;
         if(isMatch){
@@ -26,6 +26,7 @@ module.exports = function(passport){
       });
     });
   }));
+  
   passport.serializeUser(function(user, done) {
   done(null, user.id);
 });

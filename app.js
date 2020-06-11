@@ -76,6 +76,9 @@ app.use(function(req, res, next) {
 const readRouter = require('./routes/read');
 app.use(readRouter);
 
+const emailRouter = require('./routes/sendmail');
+app.use(emailRouter);
+
 // Bringing in the create routes
 const createRouter = require('./routes/create');
 app.use(createRouter);
@@ -90,7 +93,7 @@ app.use(deleteRouter);
 
 // Setting up port access for HEROKU and locally for 3000
 const port = process.env.PORT || 3000;
-
+// Set the server to listen on a particular port
 app.listen(port, () => {
   debug(`App is listening on port ${port}`);
 });

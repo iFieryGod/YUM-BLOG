@@ -52,6 +52,7 @@ const Strategy2 = mongoose.model('StrategyTwo');
 
 // Process Post Form
 router.post('/post', (req, res) => {
+  // form validations
  let errors = [];
 
   if(!req.body.title){
@@ -84,6 +85,7 @@ router.post('/post', (req, res) => {
       image: req.file.filename,
       username: req.user.firstName + " " + req.user.lastName
     }
+    // Adding new post to mongoDB
     new Strategy1(newPost)
     .save()
     .then(() => {
@@ -99,6 +101,7 @@ router.post('/post', (req, res) => {
 // Process sign-up form
 router.post('/sign-up', (req, res) => {
   const title = 'Sign Up';
+  // sign up form validations
   let errors = [];
 
   if(!req.body.firstName){
@@ -171,7 +174,7 @@ router.post('/login', (req, res, next) => {
     successRedirect: "/"
   })(req, res, next);
 });
-
+// Logging out the user through passport
 router.get('/logout', (req, res) => {
   req.logOut();
   req.flash('success_msg', 'You are logged out');
