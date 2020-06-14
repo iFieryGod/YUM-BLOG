@@ -22,12 +22,20 @@ module.exports = router;
 
 // Render the index page and get three posts from mongDB and render in index page
 router.get('/', (req, res) => {
+  let username = function(){
+    if(req.user != undefined){
+    return username = req.user.firstName
+    }
+    return true
+  }
+  
   Strategy1.find({}).limit(3).lean()
   .then(Strategy1 => {
     let updated = Strategy1.map(e => e.updated_at)
     res.render('index', {
     updated: updated,  
     Strategy1: Strategy1,
+    username: username,
     layout3: true
   });
   })
