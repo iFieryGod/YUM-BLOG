@@ -15,26 +15,6 @@ body {
 .topNav {
   background: #07070A;
 }
-/* 
-.carousel-item {
-  height: 450px;
-}
-
-.carousel-image-1 {
-  background:linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .5)), url('../images/clem-onojeg.jpg') no-repeat center;
-  background-size: cover;
-}
-
-.carousel-image-2 {
-  background:linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .5)), url('../images/jc-gellidon.jpg') no-repeat center;
-  background-size: cover;
-}
-
-.carousel-image-3 {
-  background:linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .5)), url('../images/chris-henry-fXAa4-GHudU-unsplash.jpg') no-repeat center;
-  background-size: cover;
-  
-} */
 
 #home-heading {
   position: relative;
@@ -51,7 +31,7 @@ body {
   border-radius: 20px;
   text-align: center;
   letter-spacing: 1px;
-  background:linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .2)), url('../images/daniel-olah-pCcGpVsOHoo-unsplash.jpg') no-repeat center;
+  background: url('../images/nick-nice-gPm8h3DS1s4-unsplash.jpg') no-repeat center;
   color: #fff;
 }
 
