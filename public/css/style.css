@@ -84,12 +84,4 @@ div.bg-pink {
   .blog-pictures-right{
     order: 1;
   }
-  #home-heading {
-    position: relative;
-    background: url('../images/brunel-john.jpg') no-repeat center;
-    background-size: cover;
-    background-attachment: fixed;
-    text-align: center;
-    color: #fff;
-  }
 }
