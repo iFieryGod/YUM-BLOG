@@ -4,6 +4,7 @@ Yum Blog is a mini chat application, In short it is a blog about fashion mainly 
 Getting Started
 From your Gitbash you can clone this address https://github.com/iFieryGod/YUM-BLOG.git
 and use vs code to see it in live server.
+The site can also be viewed on https://glacial-earth-69990.herokuapp.com
 
 <h3>Prerequisites</h3>
 Github
